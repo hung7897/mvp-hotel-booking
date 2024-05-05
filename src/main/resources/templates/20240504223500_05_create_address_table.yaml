@@ -1,0 +1,47 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20240504223500_05
+      author: nnhathung
+      preConditions:
+        - onFail: MARK_RAN
+          not:
+            tableExists:
+              tableName: address
+      changes:
+        - createTable:
+            tableName: address
+            columns:
+              - column:
+                  name: address_id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: street
+                  type: VARCHAR(255)
+              - column:
+                  name: city
+                  type: VARCHAR(255)
+              - column:
+                  name: state
+                  type: VARCHAR(255)
+              - column:
+                  name: postal_code
+                  type: VARCHAR(20)
+              - column:
+                  name: country
+                  type: VARCHAR(255)
+              - column:
+                  name: created_on
+                  type: TIMESTAMP
+              - column:
+                  name: created_by
+                  type: BIGINT
+              - column:
+                  name: updated_on
+                  type: TIMESTAMP
+              - column:
+                  name: updated_by
+                  type: BIGINT

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration debug="true">
+    <!-- CONSOLE APPENDER - DEV PURPOSE ONLY -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] [%-4relative] [%-5level] [%logger{35}] - %m%n%throwable</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="MVP_HOTEL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_DIR}/mvp_hotel_booking.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- daily rollover -->
+            <fileNamePattern>${LOG_DIR}/rotated/mvp_hotel_booking.log%d{yyyy-MM-dd}</fileNamePattern>
+            <!-- each file should be at most 50MB, 10 60 days worth of history, but at most 1GB -->
+            <!--maxFileSize>50MB</maxFileSize-->
+            <!-- keep 30 days' worth of history capped at 1GB total size -->
+            <maxHistory>18</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{ISO8601} [%thread] [%-4relative] [%-5level] [%logger{35}] - %m%n%throwable</pattern>
+        </encoder>
+    </appender>
+
+
+    <!-- Set level to "trace" to log sql query parameters -->
+    <logger name="org.hibernate.type.descriptor" level="info" additivity="false">
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+    <logger name="com.mvphotelbooking.mvphotelbooking" level="debug" additivity="false">
+        <appender-ref ref="MVP_HOTEL"/>
+        <appender-ref ref="STDOUT" />
+    </logger>
+
+
+    <root level="debug">
+        <appender-ref ref="STDOUT" />
+    </root>
+</Configuration>

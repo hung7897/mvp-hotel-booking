@@ -1,0 +1,7 @@
+databaseChangeLog:
+  -  changeSet:
+       id: 20240504223500_06
+       author: nnhathung
+       changes:
+         -  sqlFile:
+              path: static/insert_setup_data.sql

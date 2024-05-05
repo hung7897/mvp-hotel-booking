@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      file: templates/20240504223500_05_create_address_table.yaml
+  - include:
+      file: templates/20240504223500_01_create_hotel_table.yaml
+  - include:
+      file: templates/20240504223500_02_create_room_table.yaml
+  - include:
+      file: templates/20240504223500_03_create_guest_table.yaml
+  - include:
+      file: templates/20240504223500_04_create_reservation_table.yaml
+  - include:
+      file: templates/20240504223500_06_insert_sample_data.yaml

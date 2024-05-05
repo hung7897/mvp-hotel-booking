@@ -1,0 +1,45 @@
+databaseChangeLog:
+  -  changeSet:
+       id: 20240504223500_03
+       author: nnhathung
+       preConditions:
+         -  onFail: MARK_RAN
+            not:
+              tableExists:
+                tableName: guest
+       changes:
+         -  createTable:
+              columns:
+                -  column:
+                     autoIncrement: true
+                     constraints:
+                       nullable: false
+                       primaryKey: true
+                       primaryKeyName: guest_pkey
+                     name: guest_id
+                     type: BIGINT
+                -  column:
+                     name: first_name
+                     type: VARCHAR(255)
+                -  column:
+                     name: last_name
+                     type: VARCHAR(255)
+                -  column:
+                     name: email
+                     type: VARCHAR(255)
+                -  column:
+                     name: phone
+                     type: VARCHAR(20)
+                -  column:
+                     name: created_on
+                     type: TIMESTAMP
+                -  column:
+                     name: created_by
+                     type: BIGINT
+                -  column:
+                     name: updated_on
+                     type: TIMESTAMP
+                -  column:
+                     name: updated_by
+                     type: BIGINT
+              tableName: guest

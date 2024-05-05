@@ -1,0 +1,58 @@
+databaseChangeLog:
+  -  changeSet:
+       id: 20240504223500_04
+       author: nnhathung
+       preConditions:
+         -  onFail: MARK_RAN
+            not:
+              tableExists:
+                tableName: reservation
+       changes:
+         -  createTable:
+              columns:
+                -  column:
+                     autoIncrement: true
+                     constraints:
+                       nullable: false
+                       primaryKey: true
+                       primaryKeyName: reservation_pkey
+                     name: reservation_id
+                     type: BIGINT
+                - column:
+                    name: guest_id
+                    type: BIGINT
+                    constraints:
+                      nullable: false
+                      foreignKey: true
+                      foreignKeyName: fk_reservation_guest
+                      references: guest(guest_id)
+                - column:
+                    name: room_id
+                    type: BIGINT
+                    constraints:
+                      nullable: false
+                      foreignKey: true
+                      foreignKeyName: fk_reservation_room
+                      references: room(room_id)
+                -  column:
+                     name: checkin_datetime
+                     type: TIMESTAMP
+                -  column:
+                     name: checkout_datetime
+                     type: TIMESTAMP
+                - column:
+                    name: status
+                    type: VARCHAR(50)
+                -  column:
+                     name: created_on
+                     type: TIMESTAMP
+                -  column:
+                     name: created_by
+                     type: BIGINT
+                -  column:
+                     name: updated_on
+                     type: TIMESTAMP
+                -  column:
+                     name: updated_by
+                     type: BIGINT
+              tableName: reservation
