@@ -12,7 +12,7 @@ The MVP Hotel Booking System is a simple web application built using Spring Boot
 * Maven (for building and running the project)
 ### Getting Started
 Clone this repository:
-* git clone https://github.com/yourusername/mvp-hotel-booking.git
+* git clone https://github.com/hung7897/mvp-hotel-booking
 
 * Configure your PostgreSQL database settings in src/main/resources/application.properties.
 * Build and run the application:
